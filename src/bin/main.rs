@@ -1,4 +1,4 @@
-use driftchat::ThreadPool;
+use echoserver::ThreadPool;
 use std::io::prelude::*;
 use std::net::{TcpListener, TcpStream};
 
