@@ -4,7 +4,7 @@ use std::net::{TcpListener, TcpStream};
 
 fn main() {
     let listener = TcpListener::bind("127.0.0.1:3000").unwrap();
-    let pool = ThreadPool::new(4);
+    let pool = ThreadPool::new(64);
 
     println!("Listening on port 3000...\n");
     for stream in listener.incoming() {
@@ -18,7 +18,7 @@ fn main() {
 }
 
 fn handle_connection(mut stream: TcpStream) {
-    let mut buffer = [0; 2048];
+    let mut buffer = [0; 1_048_576];
     stream.read(&mut buffer).unwrap();
     let req = std::str::from_utf8(&buffer).unwrap().replace("\u{0}", "");
     println!("{} bytes", req.len());
