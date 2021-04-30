@@ -6,7 +6,7 @@ fn main() {
     let listener = TcpListener::bind("127.0.0.1:3000").unwrap();
     let pool = ThreadPool::new(64);
 
-    println!("Listening on port 3000...\n");
+    println!("Echoserver listening on port 3000...\n");
     for stream in listener.incoming() {
         let stream = stream.unwrap();
         pool.execute(|| {
