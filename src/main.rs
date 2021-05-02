@@ -26,7 +26,7 @@ fn handle_connection(mut stream: TcpStream) -> std::io::Result<()> {
 	reader.consume(received.len());
 
 	String::from_utf8(received)
-		.map(|msg| println!("{}\n{} bytes\n{}", Local::now(), msg.len(), msg))
+		.map(|msg| println!("{}\n{} bytes\n{}\n\n", Local::now(), msg.len(), msg))
 		.map_err(|err| {
 			std::io::Error::new(
 				std::io::ErrorKind::InvalidData,
